@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Profile</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="profile.css" />
+        <script>
+            //TO ANYONE READING THIS. IF YOU MODIFY THE CONTENTS IN THIS SCRIPT, NO CHANGES TO THE TIME WILL BE MADE AFTER CLICKING SUBMIT!
+            function startTime() {
+                var dt = new Date();
+                document.getElementById('time').innerHTML = "Are you sure you want to check-in at " + (convertToMNT(dt.getUTCHours())) + ":" + checkTime(dt.getUTCMinutes()) + "?";
+                document.getElementById('time2').innerHTML = "Are you sure you want to check-out at " + (convertToMNT(dt.getUTCHours())) + ":" + checkTime(dt.getUTCMinutes()) + "?";
+                var t = setTimeout(startTime, 500);
+            }
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                ;  // add zero in front of numbers < 10
+                return i;
+            }
+            function convertToMNT(h)
+            {
+                var t = h - 7;
+                if(t < 0)
+                {
+                    t = 12 + t;
+                    return t;
+                }
+                else if(t === 0)
+                {
+                    return 12;
+                }
+                else
+                {
+                    return t;
+                }
+            }
+        </script>
+    </head>
+    <body onload="startTime()">
+        <!-- Modal -->
+        <div id="Conf" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h2 style="text-align:left;">Settings</h2>
+                <hr />
+                <form name="LoginForm" action="index.php" method="post" style = "display:block; padding-left: 30px;">
+                    <p style="font-size:150%;">Current Password</p>
+                    <p><input type="password" id="CPass" name="cpass" style="font-size:150%; border-color:rgba(0,0,0,1);" /></p>
+                    <p style="font-size:150%;">Enter new password</p>
+                    <p><input type="password" id="RPass" name="rpass" style="font-size:150%; border-color:rgba(0,0,0,1);" /></p>
+                    <p style="font-size:150%;">Enter the new password again</p>
+                    <p><input type="password" id="RNPass" name="rnpass" style="font-size:150%; border-color:rgba(0,0,0,1);" /></p>
+                    <p><input type="submit" id="SettingSub" name="SS" value="Submit" style="font-size:150%; cursor: pointer; border-color:rgba(0,0,0,1);" /></p>
+
+                </form>
+            </div>
+
+        </div>
+        <div id="CKIN" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h2 style="text-align:left;">Check In</h2>
+                <hr />
+                <form name="LoginForm" action="index.php" method="post" style = "display:block; text-align:center;">
+                    <p style="font-size:150%; text-align: center;">Password</p>
+                    <p><input type="password" id="Passi" name="passi" style="font-size:150%; border-color:rgba(0,0,0,1);" /></p>
+                    <p style="font-size:130%;">Service: <select name="Ser" style="font-size:130%;">
+                            <option value="1">Habilitation</option>
+                            <option value="3">Respite</option>
+                            <option value="2">Attendant Care</option>
+                        </select> Client Last Name: <input type="text" id="Last" name="last" style="font-size:120%; border-color:rgba(0,0,0,1);" /></p>
+                    <p><input type="submit" id="CheckInSub" name="CIS" value="Check in" style="font-size:150%; cursor: pointer; border-color:rgba(0,0,0,1);" /></p>
+                    <p>Please note that the time for check-ins follows Mountain Time in AM/PM.</p>
+                    <p id="time"></p>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div id="CKOU" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h2 style="text-align:left;">Check Out</h2>
+                <hr />
+                <form name="LoginForm" action="index.php" method="post" style = "display:block; text-align:center;">
+                    <p style="font-size:150%; text-align: center;">Password</p>
+                    <p><input type="password" id="Passo" name="passo" style="font-size:150%; border-color:rgba(0,0,0,1);" /></p>
+                    <p><input type="submit" id="CheckOutSub" name="COS" value="Check out" style="font-size:150%; cursor: pointer; border-color:rgba(0,0,0,1);" /></p>
+                    <p>Please note that the time for check-ins follows Mountain Time in AM/PM.</p>
+                    <p id="time2"></p>
+
+                </form>
+            </div>
+
+        </div>
+        <div id="ADPU" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h2 style="text-align:left;">Add Punch</h2>
+                <hr />
+                <form name="LoginForm" action="index.php" method="post" style = "display:block; padding-left: 30px;">
+                    <pre  style="font-size:150%;">Check in(HH:MM AM/PM)                Check out(HH:MM AM/PM)</pre>
+                    <pre><input type="time" id="CHIN" name="chin" style="font-size:150%; border-color:rgba(0,0,0,1);" />                                      <input type="time" id="CHOU" name="chou" style="font-size:150%; border-color:rgba(0,0,0,1);" /></pre>
+                    <pre style="font-size:150%;">Date(MM/DD/YYYY)                     Service</pre>
+                    <pre><input type="date" id="ADATE" name="adate" style="font-size:150%; border-color:rgba(0,0,0,1);" />                            <select name="SerA" style="font-size:130%;">
+                            <option value="1">Habilitation</option>
+                            <option value="3">Respite</option>
+                            <option value="2">Attendant Care</option>
+                        </select>                   </pre>
+                    <pre style="font-size:150%;">Client last name</pre>
+                    <pre><input type="text" id="CLIE" name="clie" style="font-size:150%; border-color:rgba(0,0,0,1);" /></pre>
+                    <p><input type="submit" id="ADPUSUB" name="adpusub" value="Submit" style="font-size:150%; cursor: pointer; border-color:rgba(0,0,0,1);" /></p>
+
+                </form>
+            </div>
+
+        </div>
+        <div id="MDPU" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h2 style="text-align:left;">Add Punch</h2>
+                <hr />
+                <form name="LoginForm" action="index.php" method="post" style = "display:block; padding-left: 30px;">
+                    <pre  style="font-size:150%;">Check in(HH:MM AM/PM)                Check out(HH:MM AM/PM)</pre>
+                    <pre><input type="time" id="CHINm" name="chin" style="font-size:150%; border-color:rgba(0,0,0,1);" />                                      <input type="time" id="CHOUm" name="chou" style="font-size:150%; border-color:rgba(0,0,0,1);" /></pre>
+                    <pre style="font-size:150%;">Date(MM/DD/YYYY)                     Service</pre>
+                    <pre><input type="date" id="ADATEm" name="adate" style="font-size:150%; border-color:rgba(0,0,0,1);" />                            <select name="SerA" style="font-size:130%;">
+                            <option value="1">Habilitation</option>
+                            <option value="3">Respite</option>
+                            <option value="2">Attendant Care</option>
+                        </select>                   </pre>
+                    <pre style="font-size:150%;">Client last name                     Provider ID</pre>
+                    <pre><input type="text" id="CLIEm" name="clie" style="font-size:150%; border-color:rgba(0,0,0,1);" />              <input type="text" id="PROVI" name="provi" style="font-size:150%; border-color:rgba(0,0,0,1);" /></pre>
+                    <p><input type="submit" id="ADPUSUBm" name="adpusub" value="Submit" style="font-size:150%; cursor: pointer; border-color:rgba(0,0,0,1);" /></p>
+
+                </form>
+            </div>
+
+        </div>
+        <div id="ADPR" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h2 style="text-align:left;">Add Provider</h2>
+                <hr />
+                <form name="LoginForm" action="index.php" method="post" style = "display:block; padding-left: 30px;">
+                    <pre  style="font-size:150%;">First Name                       Last Name</pre>
+                    <pre><input type="text" id="PFN" name="pfn" style="font-size:150%; border-color:rgba(0,0,0,1);" required/>        <input type="text" id="PLN" name="pln" style="font-size:150%; border-color:rgba(0,0,0,1);" required /></pre>
+                    <pre style="font-size:150%;">Phone Number (###-###-####)      Privilege</pre>
+                    <pre><input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="PPN" name="ppn" style="font-size:150%; border-color:rgba(0,0,0,1);" />        <select name="SerA" style="font-size:130%;">
+                            <option value="0">Parent/Client</option>
+                            <option value="1">Provider</option>
+                        </select>                   </pre>
+                    <p><input type="submit" id="ADPRSub" name="adprsub" value="Submit" style="font-size:150%; cursor: pointer; border-color:rgba(0,0,0,1);" /></p>
+                    <p>The password and username is as follows: First letter of first name followed by last name.</p>
+                    <p>Example: Username = FLast@PostivePotentialaz.com | Password = FLast</p>
+                </form>
+            </div>
+
+        </div>
+        <div id="ADCL" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h2 style="text-align:left;">Add Client</h2>
+                <hr />
+                <form name="LoginForm" action="index.php" method="post" style = "display:block; padding-left: 30px;">
+                    <p style="font-size:150%;">Client First Name</p>
+                    <p><input type="text" id="CFN" name="cfn" style="font-size:150%; border-color:rgba(0,0,0,1);" required/></p>
+                    <p style="font-size:150%;">Client Last Name</p>
+                    <p><input type="text" id="CLN" name="cln" style="font-size:150%; border-color:rgba(0,0,0,1);" /></p>
+                    <p style="font-size:150%;">Provider Assignment ID</p>
+                    <p><input type="text" id="PAID" name="paid" style="font-size:150%; border-color:rgba(0,0,0,1);" /></p>
+                    <p><input type="submit" id="AddClient" name="addclient" value="Submit" style="font-size:150%; cursor: pointer; border-color:rgba(0,0,0,1);" /></p>
+
+                </form>
+            </div>
+
+        </div>
+    </body>
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/LoginHandling.js"></script>
+</html>

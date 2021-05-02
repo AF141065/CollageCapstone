@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 20, 2019, 6:48:32 PM
+    Author     : Adam
+*/
+
+html {
+    background-image: radial-gradient(closest-side, #999999, #BBBBBB, #AAAAAA); 
+    background-repeat: no-repeat;
+    height: 100%;
+}
+body {
+   background-color: #CCCCCC;
+   box-shadow: rgb(51, 51, 51) 10px 0px 40px, rgb(51, 51, 51) -10px 0px 40px;
+   border-left: 1px solid gray;
+   border-right: 1px solid gray;
+   min-height: 100%;   
+   margin: 0px auto;
+   min-width: 400px;
+   max-width: 1324px;   
+   width: 100%; 
+}
